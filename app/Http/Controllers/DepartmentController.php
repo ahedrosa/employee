@@ -24,9 +24,11 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Department $department)
     {
-        return view('department.create');
+        $data['department'] = $department;
+        $data['employees'] = Employee::all();
+        return view('department.create',$data);
     }
 
     /**
@@ -75,6 +77,8 @@ class DepartmentController extends Controller
     {
         $data = [];
         $data['department'] = $department;
+        $data['employees'] = Employee::all();
+        
         return view('department.edit', $data);
     }
 

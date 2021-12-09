@@ -47,8 +47,8 @@
                         <th scope="col">email</th>
                         <th scope="col">phone</th>
                         <th scope="col">hiringDate</th>
-                        <th scope="col">idworkstation</th>
-                        <th scope="col">iddepartment</th>
+                        <th scope="col">workstation</th>
+                        <th scope="col">department</th>
                         <th class="plus" scope="col" colspan = 3><a href="{{ url('employee/create') }}">Add New<span class="mai-add-circle-outline"></span></a></th>
                     </tr>
                 </thead>
@@ -73,12 +73,24 @@
                             <td>
                                 {{ $employee->hiringDate }}
                             </td>
+                            @if($employee->idworkstation)
                             <td>
-                                {{ $employee->idworkstation }}
+                                {{ $employee->workstation->name }}
                             </td>
+                            @else
+                            <td class="bg-danger">
+                                Unassigned
+                            </td>
+                            @endif
+                            @if($employee->iddepartment)
                             <td>
-                                {{ $employee->iddepartment }}
+                                {{ $employee->department->name }}
                             </td>
+                            @else
+                            <td class="bg-danger">
+                                Unassigned
+                            </td>
+                            @endif
                             <td>
                                 <a href="{{ url('employee/' . $employee->id) }}">Show</a>
                             </td>

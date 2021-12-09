@@ -29,13 +29,19 @@
                       <input class="form-control" value="{{ old('location', $department->location) }}" type="text" name="location" placeholder="Location's name" minlength="2" maxlength="80" required />
                   </div>
                   <div class="form-group col-md-4">
-                      <label for="">Idemployeemanager</label>
-                      <input class="form-control" value="{{ old('idemployeemanager', $department->idemployeemanager) }}" type="number" name="idemployeemanager" placeholder="Department's Manager id" minlength="0" maxlength="9999999" />
+                    <label for="">Manager</label>
+                    <select class="form-control form-control-lg" name="idemployeemanager">
+                        <option @if(old('idemployeemanager') == '')  selected @endif  value="">&nbsp;</option>
+                        @foreach ($employees as $employee)
+                            <option  @if($employee->id == $department->idemployeemanager) selected @endif value="{{ $employee -> id }}" >{{$employee -> name }}</option>
+                        @endforeach
+                    </select>
                   </div>
               </div>
+              
+              
                   
-             
-              <div class="form-row">
+              <div class="form-group form-row">
                 <div class="col-md-4">
                   <input type="submit" name="btCreate"  type="submit" value="Edit" class="btn btn-primary">
                 </div>

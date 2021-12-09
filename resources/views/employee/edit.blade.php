@@ -44,16 +44,29 @@
                       <input class="form-control" value="{{ old('hiringDate', $employee->hiringDate) }}" type="date" name="hiringDate" placeholder="Employee's hiring date"  required />
                   </div>
                   <div class="form-group col-md-4">
-                      <label for="">Workstation ID</label>
-                      <input class="form-control" value="{{ old('idworkstation', $employee->idworkstation) }}" type="number" name="idworkstation" placeholder="Employee's workstation id" min="0" max="9999999999" step="1" />
+                  <label for="">Workstation</label>
+                    <select class="form-control form-control-lg" name="idworkstation">
+                        <option @if(old('idworkstation') == '')  selected @endif  value="">&nbsp;</option>
+                        @foreach ($workstations as $workstation)
+                            <option  @if($workstation->id == $employee->idworkstation) selected @endif value="{{ $workstation -> id }}" >{{$workstation -> name }}</option>
+                        @endforeach
+                    </select>
                   </div>
               </div>
               <div class="form-row">
-                  <div class="form-group col-md-4">
-                      <label for="">Department ID</label>
-                      <input class="form-control" value="{{ old('iddepartment', $employee->iddepartment) }}" type="number" name="iddepartment" placeholder="Employee's workstation id" min="0" max="9999999999" step="1" />
-                  </div>
-              </div>
+                <div class="form-group col-md-4">
+                  <label for="">Department</label>
+                    <select class="form-control form-control-lg" name="iddepartment">
+                        <option @if(old('iddepartment') == '')  selected @endif  value="">&nbsp;</option>
+                        @foreach ($departments as $department)
+                            <option  @if($department->id == $employee->iddepartment) selected @endif value="{{ $department -> id }}" >{{$department -> name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+              </div>    
+                  
+                    
+              
                   
              
               <div class="form-row">
@@ -61,6 +74,7 @@
                   <input type="submit" name="btCreate"  type="submit" value="Edit" class="btn btn-primary">
                 </div>
               </div>
+            </div>
           </form>
       </div>
     </div>

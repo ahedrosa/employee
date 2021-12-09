@@ -62,8 +62,8 @@
                             <td>{{ $department->location }}</td>
                         </tr>
                         <tr>
-                            <td>Department's Manager ID</td>
-                            <td>{{ $department->idemoployeemanager }}</td>
+                            <td>Department's Manager Name</td>
+                            <td>{{ $department->employee->name ?? 'Manager not assigned'}}</td>
                         </tr>
                 </tbody>
             </table>

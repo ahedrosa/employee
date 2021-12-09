@@ -72,18 +72,17 @@
                         </tr>
                         <tr>
                             <th>Workstation</th>
-                            <td>
-                              @if(exists($workstation))
-                                  {{ $workstation->name }}
-                              @endif
+                              <td>
+                                
+                                {{$employee->workstation->name ?? 'No workstation'}}
+                                
                               </td>
                         </tr>
                         <tr>
                             <th>Department</th>
                             <td>
-                            @if(Session::has('department'))  
-                              {{ $department->name }}
-                            @endif  
+                              
+                              {{$employee->department->name ?? 'No department'}}
                             </td>
                         </tr>
                 </tbody>

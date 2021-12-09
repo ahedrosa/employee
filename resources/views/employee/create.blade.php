@@ -5,6 +5,10 @@
 
 
 <div class="container">
+ <h1 class="wow fadeInRight">Employee Create</h1>
+ <h2 class="wow fadeInRight back"style="float: right;margin-top: -45px;"><a href="{{ url()->previous() }}"><span id="ico" class="mai-arrow-back-circle-outline"></span>Back</a></h2>
+   
+  
 @if(Session::has('message'))
     <div class="alert alert-{{ session()->get('type') }}" role="alert">
         {{ session()->get('message') }}
@@ -13,7 +17,7 @@
       <div class="page-banner home-banner h-50 mt-4">
         <div class="row flex-wrap-reverse">
 
-          <form class="col-md-11 m-4 mt-5 mb-5" action="{{ url('employee') }}" method="post">
+          <form class="col-md-11 m-4 mt-5 mb-5 wow fadeInUp" action="{{ url('employee') }}" method="post">
               @csrf
               <div class="form-row">
                   <div class="form-group col-md-4">
@@ -39,16 +43,26 @@
                       <input class="form-control" value="{{ old('hiringDate') }}" type="date" name="hiringDate" placeholder="Employee's hiring date"  required />
                   </div>
                   <div class="form-group col-md-4">
-                      <label for="">Workstation ID</label>
-                      <input class="form-control" value="{{ old('idworkstation') }}" type="number" name="idworkstation" placeholder="Employee's workstation id" min="0" max="9999999999" step="1" />
+                  <label for="">Workstation</label>
+                  <select class="form-control form-control-lg" name="idworkstation">
+                        <option @if(old('idworkstation') == '')  selected @endif  value="">&nbsp;</option>
+                        @foreach ($workstations as $workstation)
+                            <option  @if($workstation->id == $employee->idworkstation) selected @endif value="{{ $workstation -> id }}" >{{$workstation -> name }}</option>
+                        @endforeach
+                    </select>
                   </div>
-              </div>
-              <div class="form-row">
+                  </div>
+                  <div class="form-row">
                   <div class="form-group col-md-4">
-                      <label for="">Department ID</label>
-                      <input class="form-control" value="{{ old('iddepartment') }}" type="number" name="iddepartment" placeholder="Employee's workstation id" min="0" max="9999999999" step="1" />
-                  </div>
-              </div>
+                  <label for="">Department</label>
+                    <select class="form-control form-control-lg" name="iddepartment">
+                        <option @if(old('iddepartment') == '')  selected @endif  value="">&nbsp;</option>
+                        @foreach ($departments as $department)
+                            <option  @if($department->id == $employee->iddepartment) selected @endif value="{{ $department -> id }}" >{{$department -> name }}</option>
+                        @endforeach
+                  </select>
+                </div>
+              </div> 
                   
              
               <div class="form-row">

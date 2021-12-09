@@ -4,13 +4,17 @@
 
 
 <div class="container">
+  
+  <h1 class="wow fadeInRight">Workstation Create</h1>
+  <h2 class="wow fadeInRight back"style="float: right;margin-top: -45px;"><a href="{{ url()->previous() }}"><span id="ico" class="mai-arrow-back-circle-outline"></span>Back</a></h2>
+  
 @if(Session::has('message'))
     <div class="alert alert-{{ session()->get('type') }}" role="alert">
         {{ session()->get('message') }}
     </div>
 @endif
 
-      <div class="page-banner home-banner h-50 mt-4">
+      <div class="page-banner home-banner h-50 mt-4  wow fadeInUp">
         <div class="row flex-wrap-reverse ">
 
           <form class="col-md-11 m-3 mt-5 mb-5" action="{{ url('workstation') }}" method="post">

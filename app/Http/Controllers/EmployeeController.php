@@ -24,9 +24,15 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Employee $employee)
     {
-        return view ('employee.create');
+        $data = [];
+        $data['workstations'] = Workstation::all();
+        $data['departments'] = Department::all();
+        $data['employee'] = $employee;
+        
+        
+        return view ('employee.create', $data);
     }
 
     /**
@@ -62,22 +68,22 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        $data = [];
-        $workstations = Workstation::all();
-        $departments = Department::all();
-        foreach ($workstations as $workstation){
-            if($workstation->id == $employee->idworkstation){
-                $data['workstation'] = $workstation;
-                break;
-            }
-        }
-        foreach ($departments as $department){
-            if($department->id == $employee->iddepartment){
-                $data['department'] = $department;
-                break;
-            }
-        }
-        return view('employee.show', ['employee' => $employee])->with($data);
+        // $data = [];
+        // $workstations = Workstation::all();
+        // $departments = Department::all();
+        // foreach ($workstations as $workstation){
+        //     if($workstation->id == $employee->idworkstation){
+        //         $data['workstation'] = $workstation;
+        //         break;
+        //     }
+        // }
+        // foreach ($departments as $department){
+        //     if($department->id == $employee->iddepartment){
+        //         $data['department'] = $department;
+        //         break;
+        //     }
+        // }
+        return view('employee.show', ['employee' => $employee]);
     }
 
     /**
@@ -89,6 +95,8 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         $data = [];
+        $data['workstations'] = Workstation::all();
+        $data['departments'] = Department::all();
         $data['employee'] = $employee;
         return view('employee.edit', $data);
     }

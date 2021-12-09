@@ -44,7 +44,7 @@
                         <th scope="col"># id</th>
                         <th scope="col">name</th>
                         <th scope="col">location</th>
-                        <th scope="col">idemployeemanager</th>
+                        <th scope="col">manager's name</th>
                         <th scope="col" class="plus"colspan = 3><a href="{{ url('department/create') }}">Add New<span class="mai-add-circle-outline"></span></a></th>
                     </tr>
                 </thead>
@@ -60,9 +60,15 @@
                             <td>
                                 {{ $department->location }}
                             </td>
+                            @if($department->idemployeemanager)
                             <td>
-                                {{ $department->idemployeemanager }}
+                                {{ $department->employee->name }}
                             </td>
+                            @else
+                            <td class="bg-warning">
+                                No Manager
+                            </td>
+                            @endif
                             <td>
                                 <a href="{{ url('department/' . $department->id) }}">Show</a>
                             </td>
