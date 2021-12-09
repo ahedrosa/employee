@@ -1,0 +1,67 @@
+
+.table-rounded thead{
+    border-spacing: 0px;
+    color:white;
+    text-shadow: 1.5px 1.5px 1px rgba(130,130,130, .8);
+    line-height: 1.2em;
+    
+}
+
+.table-rounded thead th:first-child {
+    border-radius: 20px 0 0 0;
+}
+.table-rounded thead th:last-child {
+    border-radius: 0 20px 0 0;
+}
+.table-rounded tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 20px;
+}
+.table-rounded tbody tr:last-child td:last-child {
+    border-radius: 0 0 20px 0;
+}
+
+
+
+.plus a span{
+    font-size: 1.5em;
+    vertical-align:bottom;
+    line-height: 0.75;
+    margin-left:2px;
+    
+}
+
+
+.plus a{
+    color: white; 
+    text-decoration:none;
+    padding-top:10px;
+    vertical-align:bottom;
+    margin-right:5px;
+}
+
+.plus {
+    text-align:right;
+}
+
+.plus a:hover{
+    text-shadow: 2.5px 2.5px 1px rgba(50,50,50, .9) !important;
+}
+
+@media (min-width: 1200px){
+    .container2 {
+        max-width: 1250px !important;
+        
+    }
+    
+    .table-rounded2{
+        width:97.5%;
+    }
+}
+
+.relleno{
+    margin-left: 0px;
+}
+
+.back a{
+    text-decoration:none;
+}
